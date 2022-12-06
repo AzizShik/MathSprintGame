@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>Math Sprint Game</title>
+</head>
+
+<body>
+
+  <div class="game-container game">
+    <h1 class="header game__title">Math Spring Game</h1>
+    <div class="main-card ">
+      <form class="game-start">
+        <div class="game__page">
+          <div class="game-start__mode">
+            <div class="radio-label">
+              <label for="value-10">10 Questions</label>
+              <input type="radio" class="radio-input" id="value-10" value="10" name="questionAmount">
+            </div>
+            <div class="score">
+              <div class="score__time">
+                <span class="score__best">Best Score</span>
+                <span class="score__value">0.0s</span>
+              </div>
+              <div class="score__results">
+                <span class="score__results-correct">Correct</span>
+                <span class="score__results-value">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="game-start__mode">
+            <div class="radio-label">
+              <label for="value-25">25 Questions</label>
+              <input type="radio" class="radio-input" id="value-25" value="25" name="questionAmount">
+            </div>
+            <div class="score">
+              <div class="score__time">
+                <span class="score__best">Best Score</span>
+                <span class="score__value">0.0s</span>
+              </div>
+              <div class="score__results">
+                <span class="score__results-correct">Correct</span>
+                <span class="score__results-value">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="game-start__mode">
+            <div class="radio-label">
+              <label for="value-50">50 Questions</label>
+              <input type="radio" class="radio-input" id="value-50" value="50" name="questionAmount">
+            </div>
+            <div class="score">
+              <div class="score__time">
+                <span class="score__best">Best Score</span>
+                <span class="score__value">0.0s</span>
+              </div>
+              <div class="score__results">
+                <span class="score__results-correct">Correct</span>
+                <span class="score__results-value">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="game-start__mode">
+            <div class="radio-label">
+              <label for="value-99">99 Questions</label>
+              <input type="radio" class="radio-input" id="value-99" value="99" name="questionAmount">
+            </div>
+            <div class="score">
+              <div class="score__time">
+                <span class="score__best">Best Score</span>
+                <span class="score__value">0.0s</span>
+              </div>
+              <div class="score__results">
+                <span class="score__results-correct">Correct</span>
+                <span class="score__results-value">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="game-start__btn btn" disabled>Start Round</button>
+      </form>
+    </div>
+
+    <div class="countdown    hidden"></div>
+
+    <div class="game__tasks hidden">
+      <div class="game__task-list"></div>
+      <div class="game__task-btns">
+        <button class="game__task-btn btn-wrong btn">Wrong</button>
+        <button class="game__task-btn btn-right btn">Right</button>
+      </div>
+    </div>
+
+    <div class="game__end hidden">
+      <div class="game__end-top">
+        <h2 class="game__end-title">Your time</h2>
+        <span class="game__end-time">0s</span>
+        <div class="game__end-conclusion">
+          <span class="game__end-correct">Correct : <b class="game__end-correct-score">0</b></span>
+          <span class="game__end-incorrect">Incorrect : <b class="game__end-incorrect-score">0</b></span>
+        </div>
+        <div class="game__end-base">Base Time: <span class="game__end-base-span">0s</span></div>
+        <div class="game__end-penalty">Penalty: <span class="game__end-penalty-span">+0s</span></div>
+      </div>
+      <button class="btn game__end-btn">Play Again</button>
+    </div>
+
+  </div>
+
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
