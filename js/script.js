@@ -222,8 +222,6 @@ window.addEventListener('load', () => {
 		gameEndTimeSpan.innerHTML = `${time / 1000}s`;
 		gameEndPenalty.innerHTML = `+${incorrect * 0.5}s`;
 
-		console.log(scoreObj[`quest${questionsAmount}`].correct, score);
-
 		if (scoreObj[`quest${questionsAmount}`].correct < score) {
 			scoreObj[`quest${questionsAmount}`].correct = score;
 			gameStartModeCorrectValue.innerHTML = `${score}`;
@@ -237,7 +235,6 @@ window.addEventListener('load', () => {
 			scoreObj[`quest${questionsAmount}`].bestScore = bestScore;
 		}
 
-		console.log(scoreObj);
 		loadLocalStorage(scoreObj);
 
 		clearInterval(timeInterval);
