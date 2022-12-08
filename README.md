@@ -4,6 +4,7 @@
 
 https://azizshik.github.io/MathSprintGame/ </br>
 
+![Math Sprint Game ](https://user-images.githubusercontent.com/68865224/206551137-8d912e56-ed66-4f63-a71b-a3976785d9b1.gif)
 
 
 ### Description:
