@@ -19,6 +19,44 @@ window.addEventListener('load', () => {
 	const gameEndBtn = document.querySelector('.game__end-btn');
 	const gameTaskList = document.querySelector('.game__task-list');
 
+	let scoreObj = {
+		quest10: {
+			bestScore: 0,
+			correct: 0,
+		},
+		quest25: {
+			bestScore: 0,
+			correct: 0,
+		},
+		quest50: {
+			bestScore: 0,
+			correct: 0,
+		},
+		quest99: {
+			bestScore: 0,
+			correct: 0,
+		},
+	};
+
+	if (localStorage.getItem('scoreObj') !== null) {
+		scoreObj = JSON.parse(localStorage.getItem('scoreObj'));
+	}
+
+	function updateDataFromLocalStorage() {
+		const questionsArr = ['quest10', 'quest25', 'quest50', 'quest99'];
+		for (let i = 0; i < gameStartModes.length; i++) {
+			const scoreValue = gameStartModes[i].querySelector('.score__value');
+			const scoreCorrect = gameStartModes[i].querySelector(
+				'.score__results-value'
+			);
+
+			scoreValue.innerHTML = scoreObj[questionsArr[i]].bestScore + 's';
+			scoreCorrect.innerHTML = scoreObj[questionsArr[i]].correct;
+		}
+	}
+
+	updateDataFromLocalStorage();
+
 	let clientHeight = 57;
 	let tasksArr = [];
 	let score = 0;
@@ -176,17 +214,37 @@ window.addEventListener('load', () => {
 		}
 
 		const bestScore = ((questionsAmount - score) * 0.5 * 1000 + time) / 1000;
-
-		gameStartModeScoreValue.innerHTML = `${bestScore}s`;
-		gameStartModeCorrectValue.innerHTML = `${score}`;
+		const incorrect = questionsAmount - score;
 
 		gameEndTime.innerHTML = `${bestScore}s`;
 		correctEndEl.innerHTML = `${score}`;
-		incorrectEndEl.innerHTML = `${questionsAmount - score}`;
+		incorrectEndEl.innerHTML = `${incorrect}`;
 		gameEndTimeSpan.innerHTML = `${time / 1000}s`;
-		gameEndPenalty.innerHTML = `+${(questionsAmount - score) * 0.5}s`;
+		gameEndPenalty.innerHTML = `+${incorrect * 0.5}s`;
+
+		console.log(scoreObj[`quest${questionsAmount}`].correct, score);
+
+		if (scoreObj[`quest${questionsAmount}`].correct < score) {
+			scoreObj[`quest${questionsAmount}`].correct = score;
+			gameStartModeCorrectValue.innerHTML = `${score}`;
+		}
+
+		if (
+			scoreObj[`quest${questionsAmount}`].bestScore > bestScore ||
+			scoreObj[`quest${questionsAmount}`].bestScore === 0
+		) {
+			gameStartModeScoreValue.innerHTML = `${bestScore}s`;
+			scoreObj[`quest${questionsAmount}`].bestScore = bestScore;
+		}
+
+		console.log(scoreObj);
+		loadLocalStorage(scoreObj);
 
 		clearInterval(timeInterval);
+	}
+
+	function loadLocalStorage(obj) {
+		localStorage.setItem('scoreObj', JSON.stringify(obj));
 	}
 
 	function playAgain() {
