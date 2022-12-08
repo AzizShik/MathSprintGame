@@ -23,6 +23,7 @@ window.addEventListener('load', () => {
 	let tasksArr = [];
 	let score = 0;
 	let time = 0;
+	let timeInterval;
 	let questionsAmount = 0;
 	let gameStartModeScoreValue;
 	let gameStartModeCorrectValue;
@@ -58,7 +59,7 @@ window.addEventListener('load', () => {
 		setTimeout(() => (countdownEl.innerHTML = '1...'), 2000);
 		setTimeout(() => (countdownEl.innerHTML = 'GO!'), 3000);
 		setTimeout(() => {
-			setInterval(() => {
+			timeInterval = setInterval(() => {
 				time += 100;
 			}, 100);
 
@@ -153,7 +154,6 @@ window.addEventListener('load', () => {
 			top: height,
 			behavior: behavior,
 		});
-		console.log(element, height);
 	}
 
 	function gameOver() {
@@ -185,6 +185,8 @@ window.addEventListener('load', () => {
 		incorrectEndEl.innerHTML = `${questionsAmount - score}`;
 		gameEndTimeSpan.innerHTML = `${time / 1000}s`;
 		gameEndPenalty.innerHTML = `+${(questionsAmount - score) * 0.5}s`;
+
+		clearInterval(timeInterval);
 	}
 
 	function playAgain() {

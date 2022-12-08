@@ -63,7 +63,7 @@ button {
 	border-radius: var(--borderRadius);
 	max-width: 500px;
 	width: 100%;
-	min-height: 505px;
+	min-height: 495px;
 }
 
 .header {
@@ -329,4 +329,76 @@ button {
 
 .hidden {
 	display: none;
+}
+
+@media (max-width: 575px) {
+	.header {
+		font-size: 24px;
+	}
+	.radio-label {
+		font-size: 24px;
+	}
+
+	.score__results-value {
+		font-size: 18px;
+	}
+
+	.score__results-correct {
+		font-size: 18px;
+	}
+
+	.score__best {
+		font-size: 18px;
+	}
+
+	.score__value {
+		font-size: 18px;
+	}
+
+	.game-container {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	.game-start__mode {
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	.game-start__mode {
+		flex-direction: column;
+		gap: 15px;
+	}
+	.game-start {
+		padding: 10px;
+	}
+
+	.score {
+		gap: 10px;
+	}
+
+	.score__time {
+		gap: 5px;
+	}
+
+	.score__results {
+		gap: 5px;
+	}
+
+	.score__results-value {
+		font-size: 24px;
+	}
+
+	.score__results-correct {
+		font-size: 21px;
+	}
+
+	.score__best {
+		font-size: 21px;
+	}
+
+	.score__value {
+		font-size: 24px;
+	}
 }
