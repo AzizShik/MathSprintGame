@@ -21,6 +21,10 @@ h3 {
 	--green: rgb(8, 187, 8);
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
@@ -150,7 +154,7 @@ button {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	font-size: calc(10vw + 32px);
+	font-size: calc(5vw + 32px);
 	font-weight: 700;
 }
 

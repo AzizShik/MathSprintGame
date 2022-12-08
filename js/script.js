@@ -17,7 +17,9 @@ window.addEventListener('load', () => {
 	const gameEndTimeSpan = document.querySelector('.game__end-base-span');
 	const gameEndPenalty = document.querySelector('.game__end-penalty-span');
 	const gameEndBtn = document.querySelector('.game__end-btn');
+	const gameTaskList = document.querySelector('.game__task-list');
 
+	let clientHeight = 57;
 	let tasksArr = [];
 	let score = 0;
 	let time = 0;
@@ -86,6 +88,8 @@ window.addEventListener('load', () => {
 			});
 
 			document.querySelector('.game__task').classList.add('game__task--active');
+
+			nextTaskScroll(gameTaskList, 0, 'auto');
 		}, 3100);
 	});
 
@@ -134,11 +138,23 @@ window.addEventListener('load', () => {
 
 	btnRight.addEventListener('click', () => {
 		taskRight(true);
+		nextTaskScroll(gameTaskList, clientHeight);
+		clientHeight += 57;
 	});
 
 	btnWrong.addEventListener('click', () => {
 		taskRight(false);
+		nextTaskScroll(gameTaskList, clientHeight);
+		clientHeight += 57;
 	});
+
+	function nextTaskScroll(element, height, behavior = 'smooth') {
+		element.scrollTo({
+			top: height,
+			behavior: behavior,
+		});
+		console.log(element, height);
+	}
 
 	function gameOver() {
 		const gameTasksEls = document.querySelectorAll('.game__task');
@@ -186,6 +202,8 @@ window.addEventListener('load', () => {
 		questionsAmount = 0;
 		gameStartModeScoreValue;
 		gameStartModeCorrectValue;
+
+		clientHeight = 57;
 	}
 
 	gameEndBtn.addEventListener('click', playAgain);
